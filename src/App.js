@@ -3,6 +3,9 @@ import ParameterForm from './ParameterForm';
 import SwitchDisplay from './SwitchDisplay';
 import ExpandablePanel from './ExpandablePanel';
 import TrophicFeedsPanel from './TrophicFeedsPanel';
+import MalnutritionCalc from './MalnutritionCalc';
+import InHospitalRegimen from './InHospitalRegimen';
+import DischargeRegimen from './DischargeRegimen';
 
 function App() {
   const [parameters, setParameters] = useState({
@@ -11,8 +14,10 @@ function App() {
   });
   const [switches, setSwitches] = useState({
     "Special Condition Information": false,
-    "General Condition Information": false,
-    "Early NPO or trophic feeds + TPN": false
+    "Malnutrition Calc": false,
+    "Early NPO or trophic feeds + TPN": false,
+    "In Hospital Regimen": false,
+    "Discharge Regimen": false  // New switch for Discharge Regimen
   });
 
   const handleParametersSubmit = (params) => {
@@ -43,13 +48,17 @@ function App() {
               {/* Optionally, add more custom content or child components here */}
             </ExpandablePanel>
           )}
-          {switches["General Condition Information"] && (
-            <ExpandablePanel title="General Condition Information">
-              {/* Optionally, add more custom content or child components here */}
-            </ExpandablePanel>
+          {switches["Malnutrition Calc"] && (
+            <MalnutritionCalc />
           )}
           {switches["Early NPO or trophic feeds + TPN"] && (
             <TrophicFeedsPanel parameters={parameters} />
+          )}
+          {switches["In Hospital Regimen"] && (
+            <InHospitalRegimen birthWeight={parseFloat(parameters.birthWeight)} />
+          )}
+          {switches["Discharge Regimen"] && (
+            <DischargeRegimen birthWeight={parseFloat(parameters.birthWeight)} />
           )}
         </>
       )}

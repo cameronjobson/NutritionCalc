@@ -3,8 +3,18 @@ import ExpandablePanel from './ExpandablePanel';
 import InformationDisplay from './InformationDisplay';
 
 function TrophicFeedsPanel({ parameters }) {
-  const [infoList, setInfoList] = useState([]);
-  const [subSwitches, setSubSwitches] = useState({
+  // Define switch names and their corresponding information strings
+  const switchDetails = {
+    switch1: { name: "Day of Life 1 (BIRTH)", info: `Details about Nutrition Support. Gestational Age: ${parameters.gestAgeDays} days` },
+    switch2: { name: "Day of Life 2", info: `Information on Fluid Management protocols. Birth Weight: ${parameters.birthWeight} grams` },
+    switch3: { name: "Day of Life 3", info: "placeholdertext3" },
+    switch4: { name: "Day of Life 4", info: "placeholdertext4" },
+    switch5: { name: "Day of Life 5", info: "placeholdertext5" },
+    switch6: { name: "Full TPN", info: "placeholdertext6" }
+  };
+
+  // States for managing the toggling of each switch and storing information
+  const [subSwitchStates, setSubSwitchStates] = useState({
     switch1: false,
     switch2: false,
     switch3: false,
@@ -12,13 +22,14 @@ function TrophicFeedsPanel({ parameters }) {
     switch5: false,
     switch6: false
   });
+  const [infoList, setInfoList] = useState([]);
 
-  const handleSubSwitchChange = (switchName) => {
-    const newState = !subSwitches[switchName];
-    setSubSwitches({ ...subSwitches, [switchName]: newState });
+  const handleSubSwitchChange = (switchKey) => {
+    const newState = !subSwitchStates[switchKey];
+    setSubSwitchStates({ ...subSwitchStates, [switchKey]: newState });
 
     // Manage the information list based on the state of the switch
-    const info = `Information for ${switchName} (Gestational Age: ${parameters.gestAgeDays} days, Birth Weight: ${parameters.birthWeight} grams)`;
+    const info = switchDetails[switchKey].info;
     if (newState) {
       setInfoList(prev => [...prev, info]);
     } else {
@@ -28,14 +39,14 @@ function TrophicFeedsPanel({ parameters }) {
 
   return (
     <ExpandablePanel title="Early NPO or trophic feeds + TPN">
-      {Object.keys(subSwitches).map(switchName => (
-        <div key={switchName}>
+      {Object.entries(switchDetails).map(([key, { name }]) => (
+        <div key={key}>
           <label>
-            {switchName}
+            {name}
             <input 
               type="checkbox"
-              checked={subSwitches[switchName]}
-              onChange={() => handleSubSwitchChange(switchName)}
+              checked={subSwitchStates[key]}
+              onChange={() => handleSubSwitchChange(key)}
               style={{ marginLeft: '10px' }}
             />
           </label>
