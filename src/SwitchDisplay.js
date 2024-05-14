@@ -1,5 +1,5 @@
-// SwitchDisplay.js
 import React, { useEffect, useState } from 'react';
+import './SwitchDisplay.css'; // Make sure to create and import a CSS file for styles
 
 function SwitchDisplay({ label, onSwitchChange, parameters }) {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -22,24 +22,23 @@ function SwitchDisplay({ label, onSwitchChange, parameters }) {
     }
   };
 
+  const buttonClass = `switch-display-button ${isEnabled ? 'enabled' : ''} ${disabled ? 'disabled' : ''}`;
+
   return (
-    <label>
+    <button 
+      className={buttonClass}
+      onClick={handleToggle}
+      disabled={disabled}
+    >
       {label}
-      <input 
-        type="checkbox" 
-        checked={isEnabled}
-        onChange={handleToggle}
-        disabled={disabled}
-        style={{ marginLeft: '10px' }}
-      />
-    </label>
+    </button>
   );
 }
 
 // Function to determine if a switch should be disabled based on parameters
 function shouldDisableSwitch(switchName, params) {
   const { gestAgeDays, birthWeight } = params;
-  if (switchName === "Early NPO or trophic feeds + TPN" && !(birthWeight < 1500)) {
+  if (switchName === "Early NPO or trophic feeds + TPN" && birthWeight >= 1500) {
     return true; // Disable switch under specific conditions
   }
   return false; // By default, switches are enabled

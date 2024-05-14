@@ -1,3 +1,4 @@
+import './App.css';
 import React, { useState } from 'react';
 import ParameterForm from './ParameterForm';
 import SwitchDisplay from './SwitchDisplay';
@@ -17,7 +18,8 @@ function App() {
     "Malnutrition Calc": false,
     "Early NPO or trophic feeds + TPN": false,
     "In Hospital Regimen": false,
-    "Discharge Regimen": false  // New switch for Discharge Regimen
+    "Discharge Regimen": false,
+    "Vitamins and Minerals": false
   });
 
   const handleParametersSubmit = (params) => {
@@ -31,10 +33,10 @@ function App() {
   const hasValidParameters = parameters.gestAgeDays && parameters.birthWeight;
 
   return (
-    <div>
+    <div className="app-container">
       <ParameterForm onParametersSubmit={handleParametersSubmit} />
       {hasValidParameters && (
-        <>
+        <div className="switches-container">
           {Object.keys(switches).map((switchName, index) => (
             <SwitchDisplay 
               key={index}
@@ -43,25 +45,14 @@ function App() {
               parameters={parameters}
             />
           ))}
-          {switches["Special Condition Information"] && (
-            <ExpandablePanel title="Special Condition Information">
-              {/* Optionally, add more custom content or child components here */}
-            </ExpandablePanel>
-          )}
-          {switches["Malnutrition Calc"] && (
-            <MalnutritionCalc />
-          )}
-          {switches["Early NPO or trophic feeds + TPN"] && (
-            <TrophicFeedsPanel parameters={parameters} />
-          )}
-          {switches["In Hospital Regimen"] && (
-            <InHospitalRegimen birthWeight={parseFloat(parameters.birthWeight)} />
-          )}
-          {switches["Discharge Regimen"] && (
-            <DischargeRegimen birthWeight={parseFloat(parameters.birthWeight)} />
-          )}
-        </>
+        </div>
       )}
+      {switches["Special Condition Information"] && <ExpandablePanel title="Special Condition Information" />}
+      {switches["Malnutrition Calc"] && <MalnutritionCalc />}
+      {switches["Early NPO or trophic feeds + TPN"] && <TrophicFeedsPanel parameters={parameters} />}
+      {switches["In Hospital Regimen"] && <InHospitalRegimen birthWeight={parseFloat(parameters.birthWeight)} />}
+      {switches["Discharge Regimen"] && <DischargeRegimen birthWeight={parseFloat(parameters.birthWeight)} />}
+      
     </div>
   );
 }

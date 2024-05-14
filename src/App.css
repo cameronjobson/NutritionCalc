@@ -1,38 +1,118 @@
-.App {
-  text-align: center;
+/* General Body Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4faff;  /* Light blue background */
+  color: #333;
+  margin: 0;
+  padding: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* App Container */
+div {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+/* Forms and Panels */
+form, .panel {
+  background-color: #ffffff; /* White background for forms and panels */
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 10px;
+  width: 90%;
+  max-width: 190px;
+}
+
+/* Headings */
+h1, h2, h3 {
+  color: #005792; /* Dark blue for headings */
+}
+
+/* Input and Buttons */
+input[type="text"], input[type="number"], button {
+  border: 2px solid #005792;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #007acc; /* Bright blue for buttons */
   color: white;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+button:hover {
+  background-color: #005792; /* Darker blue on hover */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Custom Components Styling */
+.SwitchDisplay {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #e6f7ff; /* Very light blue for switch display */
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: auto; /* adjust this as needed */
+  max-width: 200px; /* maximum width for each switch */
+}
+
+.ExpandablePanel {
+  transition: all 0.3s ease;
+}
+
+.ExpandablePanel.expanded {
+  max-height: 500px;
+  overflow: hidden;
+}
+
+/* Specific Panel Styling */
+.TrophicFeedsPanel, .MalnutritionCalc, .InHospitalRegimen, .DischargeRegimen {
+  background-color: #e6f7ff; /* Consistency in panel colors */
+}
+
+/* Link Styles */
+a {
+  color: #007acc;
+}
+
+a:hover {
+  color: #005792;
+}
+
+/* App container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align children to the left */
+  padding: 20px; /* Add padding for some space around the content */
+  width: 100%; /* Ensure it takes full width of the viewport */
+}
+
+.switches-container {
+  display: grid;
+  grid-auto-flow: column; /* Directs items to flow into new columns rather than new rows */
+  grid-template-rows: repeat(2, 1fr); /* Ensures exactly two rows */
+  grid-auto-columns: minmax(120px, 1fr); /* Dynamic column width based on content, with a minimum and flexible maximum */
+  gap: 10px; /* Space between the components */
+  padding: 20px; /* Padding around the grid */
+  overflow-x: auto; /* Allows horizontal scrolling if more items than can fit */
+}
+
+@media (max-width: 768px) {
+  .switches-container {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
-  to {
-    transform: rotate(360deg);
+
+  .SwitchDisplay {
+    max-width: 150px; /* Smaller max width for smaller screens */
   }
 }
+

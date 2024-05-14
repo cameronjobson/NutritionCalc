@@ -1,0 +1,21 @@
+.switch-display-button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: #007BFF; /* Default blue for not enabled */
+    color: white;
+  }
+  
+  .switch-display-button.enabled {
+    background-color: #4CAF50; /* Green when enabled */
+  }
+  
+  .switch-display-button.disabled {
+    background-color: #e0e0e0; /* Grey when disabled */
+    color: #a0a0a0;
+    cursor: not-allowed;
+  }
+  

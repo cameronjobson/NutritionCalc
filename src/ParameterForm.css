@@ -1,0 +1,20 @@
+/* Styling for input fields in the ParameterForm */
+form input[type="number"] {
+    max-width: 200px; /* Set a maximum width appropriate for 6-digit numbers */
+    padding: 8px 12px;
+    margin: 10px 0;
+    border: 2px solid #005792; /* Keeping the styling consistent with your theme */
+    border-radius: 5px;
+  }
+  
+
+
+/* Styling for input fields specifically in the ParameterForm */
+.parameter-form input[type="number"] {
+    max-width: 200px; /* Set a maximum width appropriate for 6-digit numbers */
+    padding: 8px 12px;
+    margin: 10px 0;
+    border: 2px solid #005792; /* Keeping the styling consistent with your theme */
+    border-radius: 5px;
+  }
+  

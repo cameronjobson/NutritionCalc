@@ -1,5 +1,6 @@
 // File retreves patient data from the user
 // ParameterForm.js
+import './SwitchDisplay.css';
 import React, { useState } from 'react';
 
 function ParameterForm({ onParametersSubmit }) {
@@ -9,7 +10,6 @@ function ParameterForm({ onParametersSubmit }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Calculate total gestational age in days
     const totalGestAgeDays = parseInt(gestAgeWeeks) * 7 + parseInt(gestAgeDays);
     onParametersSubmit({
       gestAgeDays: totalGestAgeDays,
@@ -18,7 +18,7 @@ function ParameterForm({ onParametersSubmit }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="parameter-form">
       <input
         type="number"
         value={gestAgeWeeks}

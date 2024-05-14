@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './ExpandablePanel.css'; // Ensure CSS is correctly imported
 
 function ExpandablePanel({ title, children }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,16 +9,16 @@ function ExpandablePanel({ title, children }) {
   };
 
   return (
-    <div style={{ marginBottom: '10px' }}>
-      <button onClick={togglePanel} style={{ width: '100%', textAlign: 'left', padding: '10px', fontSize: '16px', backgroundColor: 'lightgrey', border: 'none', cursor: 'pointer' }}>
-        <span style={{ marginRight: '10px' }}>{isOpen ? '▼' : '►'}</span>
+    <div className="expandable-panel">
+      <button className="expandable-panel-button" onClick={togglePanel}>
+        <span className={`expandable-panel-icon ${isOpen ? 'open' : ''}`}>
+          {isOpen ? '▼' : '►'}
+        </span>
         {title}
       </button>
-      {isOpen && (
-        <div style={{ padding: '10px', border: '1px solid lightgrey', borderTop: 'none' }}>
-          {children}
-        </div>
-      )}
+      <div className={`expandable-panel-content ${isOpen ? 'open' : ''}`}>
+        {children}
+      </div>
     </div>
   );
 }
