@@ -7,6 +7,7 @@ import TrophicFeedsPanel from './TrophicFeedsPanel';
 import MalnutritionCalc from './MalnutritionCalc';
 import InHospitalRegimen from './InHospitalRegimen';
 import DischargeRegimen from './DischargeRegimen';
+import VitaminMineralsPanel from './VitaminsMinerals';
 
 function App() {
   const [parameters, setParameters] = useState({
@@ -52,7 +53,8 @@ function App() {
       {switches["Early NPO or trophic feeds + TPN"] && <TrophicFeedsPanel parameters={parameters} />}
       {switches["In Hospital Regimen"] && <InHospitalRegimen birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["Discharge Regimen"] && <DischargeRegimen birthWeight={parseFloat(parameters.birthWeight)} />}
-      
+      {switches["Vitamins and Minerals"] && <VitaminMineralsPanel parameters={parameters} />}
+
     </div>
   );
 }

@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
 import ExpandablePanel from './ExpandablePanel';
-import InformationDisplay from './InformationDisplay';
+import './TrophicFeedsPanel.css';
 
 function TrophicFeedsPanel({ parameters }) {
-  // Define switch names and their corresponding information strings
   const switchDetails = {
-    switch1: { name: "Day of Life 1 (BIRTH)", info: `Details about Nutrition Support. Gestational Age: ${parameters.gestAgeDays} days` },
-    switch2: { name: "Day of Life 2", info: `Information on Fluid Management protocols. Birth Weight: ${parameters.birthWeight} grams` },
-    switch3: { name: "Day of Life 3", info: "placeholdertext3" },
-    switch4: { name: "Day of Life 4", info: "placeholdertext4" },
-    switch5: { name: "Day of Life 5", info: "placeholdertext5" },
-    switch6: { name: "Full TPN", info: "placeholdertext6" }
+    switch0: { id: 0, name: "Day of Life 0", imagePath: '/images/Day0.png' },
+    switch1: { id: 1, name: "Day of Life 1 (BIRTH)", imagePath: '/images/Day1.png' },
+    switch2: { id: 2, name: "Day of Life 2", imagePath: '/images/Day2.png' },
+    switch3: { id: 3, name: "Day of Life 3", imagePath: '/images/Day3.png' },
+    switch4: { id: 4, name: "Day of Life 4", imagePath: '/images/Day4.png' },
+    switch5: { id: 5, name: "Day of Life 5", imagePath: '/images/Day5.png' },
+    switch6: { id: 6, name: "Full TPN", imagePath: '/images/Day6.png' }
   };
 
-  // States for managing the toggling of each switch and storing information
   const [subSwitchStates, setSubSwitchStates] = useState({
     switch1: false,
     switch2: false,
@@ -22,39 +21,48 @@ function TrophicFeedsPanel({ parameters }) {
     switch5: false,
     switch6: false
   });
-  const [infoList, setInfoList] = useState([]);
+
+  const [selectedImages, setSelectedImages] = useState([]);
 
   const handleSubSwitchChange = (switchKey) => {
     const newState = !subSwitchStates[switchKey];
-    setSubSwitchStates({ ...subSwitchStates, [switchKey]: newState });
+    setSubSwitchStates(prev => ({ ...prev, [switchKey]: newState }));
 
-    // Manage the information list based on the state of the switch
-    const info = switchDetails[switchKey].info;
-    if (newState) {
-      setInfoList(prev => [...prev, info]);
-    } else {
-      setInfoList(prev => prev.filter(i => i !== info));
-    }
+    const newSelectedImages = Object.entries(subSwitchStates)
+        .filter(([key, value]) => key === switchKey ? newState : value)
+        .map(([key]) => ({
+            id: switchDetails[key].id,
+            imagePath: switchDetails[key].imagePath
+        }))
+        .sort((a, b) => a.id - b.id)
+        .map(item => item.imagePath);
+
+    const anyActive = newSelectedImages.length > 0;
+    setSelectedImages(anyActive ? [switchDetails.switch0.imagePath, ...newSelectedImages] : newSelectedImages);
   };
 
   return (
     <ExpandablePanel title="Early NPO or trophic feeds + TPN">
-      {Object.entries(switchDetails).map(([key, { name }]) => (
-        <div key={key}>
-          <label>
-            {name}
-            <input 
-              type="checkbox"
-              checked={subSwitchStates[key]}
-              onChange={() => handleSubSwitchChange(key)}
-              style={{ marginLeft: '10px' }}
-            />
-          </label>
-        </div>
+      {Object.entries(switchDetails)
+        .filter(([key]) => key !== 'switch0')  // Exclude Day 0 from the UI controls
+        .map(([key, { name }]) => (
+          <div key={key}>
+            <label>
+              {name}
+              <input 
+                type="checkbox"
+                checked={subSwitchStates[key]}
+                onChange={() => handleSubSwitchChange(key)}
+                style={{ marginLeft: '10px' }}
+              />
+            </label>
+          </div>
       ))}
-      {infoList.map((info, index) => (
-        <InformationDisplay key={index} info={info} />
-      ))}
+      <div className="image-container">
+        {selectedImages.map((imagePath, index) => (
+          <img src={imagePath} alt={`Nutritional Plan Day ${index}`} className="image-size" key={index} />
+        ))}
+      </div>
     </ExpandablePanel>
   );
 }

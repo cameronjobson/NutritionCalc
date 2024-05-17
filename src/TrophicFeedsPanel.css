@@ -1,0 +1,12 @@
+.image-container {
+  display: flex;
+  flex-direction: row;  /* Align children horizontally */
+  align-items: flex-start; /* Align items to the start of the cross axis */
+  overflow-x: auto; /* Allows horizontal scrolling if images overflow */
+}
+
+.image-size {
+  width: 50px; /* Fixed width for each image */
+  height: auto; /* Maintains the aspect ratio of the image */
+  margin-right: 5px; /* Adds space between images */
+}
