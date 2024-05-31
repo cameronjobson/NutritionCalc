@@ -8,6 +8,7 @@ import MalnutritionCalc from './MalnutritionCalc';
 import InHospitalRegimen from './InHospitalRegimen';
 import DischargeRegimen from './DischargeRegimen';
 import VitaminMineralsPanel from './VitaminsMinerals';
+import EarlyAdvFeeds from './EarlyAdvFeeds';
 
 function App() {
   const [parameters, setParameters] = useState({
@@ -20,7 +21,8 @@ function App() {
     "Early NPO or trophic feeds + TPN": false,
     "In Hospital Regimen": false,
     "Discharge Regimen": false,
-    "Vitamins and Minerals": false
+    "Vitamins and Minerals": false,
+    "EarlyAdvFeeds": false
   });
 
   const handleParametersSubmit = (params) => {
@@ -54,6 +56,7 @@ function App() {
       {switches["In Hospital Regimen"] && <InHospitalRegimen birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["Discharge Regimen"] && <DischargeRegimen birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["Vitamins and Minerals"] && <VitaminMineralsPanel parameters={parameters} />}
+      {switches["EarlyAdvFeeds"] && <EarlyAdvFeeds birthWeight={parseFloat(parameters.birthWeight)} />}
 
     </div>
   );

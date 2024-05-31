@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './ExpandablePanel.css'; // Ensure CSS is correctly imported
+import './ExpandablePanel.css';
 
 function ExpandablePanel({ title, children }) {
   const [isOpen, setIsOpen] = useState(false);
