@@ -3,6 +3,9 @@ import ExpandablePanel from './ExpandablePanel';
 import './EarlyAdvFeeds.css';
 
 function EarlyAdvFeeds({ birthWeight }) {
+
+  const [imageVisible, setImageVisible] = useState(false); // State to control the visibility of the image
+
   const switchDetails = useMemo(() => ({
     switch0: { id: 0, name: "0", imagePath: birthWeight <= 1250 ? '/images/ADVFeedsMore0.png' : '/images/ADVFeedsLess0.png', width: '50px', height: '360px' },
     switch1: { id: 1, name: "20", imagePath: birthWeight <= 1250 ? '/images/ADVFeedsMore1.png' : '/images/ADVFeedsLess1.png', width: '42px', height: '360px' },
@@ -43,6 +46,12 @@ function EarlyAdvFeeds({ birthWeight }) {
     setSelectedImages(anyActive ? [{ path: switchDetails.switch0.imagePath, width: switchDetails.switch0.width, height: switchDetails.switch0.height }, ...newSelectedImages] : newSelectedImages);
   };
 
+  const selectedImage = useMemo(() => {
+    if (birthWeight <= 750) return '/images/MoreTrophic750.png';
+    if (birthWeight > 750 && birthWeight <= 1250) return '/images/MoreTrophic751-1250.png';
+    return '/images/MoreTrophic1250-2200.png';
+  }, [birthWeight]);
+
   return (
     <ExpandablePanel title="Early Adv feeds + TPN">
       {Object.entries(switchDetails)
@@ -65,6 +74,20 @@ function EarlyAdvFeeds({ birthWeight }) {
           <img src={image.path} alt={`Nutritional Plan Day ${index}`} style={{ width: image.width, height: image.height }} key={index} />
         ))}
       </div>
+      <div>
+      <label>
+        More on Trophic Feeds
+        <input
+          type="checkbox"
+          checked={imageVisible}
+          onChange={() => setImageVisible(!imageVisible)} // Toggle visibility state
+          style={{ marginLeft: '10px' }}
+        />
+      </label>
+      {imageVisible && (
+        <img src={selectedImage} alt="Birth Weight Based Image" style={{ width: '476px', height: '267px' }} />
+      )}
+    </div>
     </ExpandablePanel>
   );
 }

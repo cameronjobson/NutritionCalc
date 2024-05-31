@@ -22,7 +22,7 @@ function App() {
     "In Hospital Regimen": false,
     "Discharge Regimen": false,
     "Vitamins and Minerals": false,
-    "EarlyAdvFeeds": false
+    "Early Adv Feeds + TPN": false
   });
 
   const handleParametersSubmit = (params) => {
@@ -52,11 +52,11 @@ function App() {
       )}
       {switches["Special Condition Information"] && <ExpandablePanel title="Special Condition Information" />}
       {switches["Malnutrition Calc"] && <MalnutritionCalc />}
-      {switches["Early NPO or trophic feeds + TPN"] && <TrophicFeedsPanel parameters={parameters} />}
+      {switches["Early NPO or trophic feeds + TPN"] && <TrophicFeedsPanel birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["In Hospital Regimen"] && <InHospitalRegimen birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["Discharge Regimen"] && <DischargeRegimen birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["Vitamins and Minerals"] && <VitaminMineralsPanel parameters={parameters} />}
-      {switches["EarlyAdvFeeds"] && <EarlyAdvFeeds birthWeight={parseFloat(parameters.birthWeight)} />}
+      {switches["Early Adv Feeds + TPN"] && <EarlyAdvFeeds birthWeight={parseFloat(parameters.birthWeight)} />}
 
     </div>
   );
