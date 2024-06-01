@@ -9,6 +9,7 @@ import InHospitalRegimen from './InHospitalRegimen';
 import DischargeRegimen from './DischargeRegimen';
 import VitaminMineralsPanel from './VitaminsMinerals';
 import EarlyAdvFeeds from './EarlyAdvFeeds';
+import FullFeedsNutInfo from './FullFeedsNutInfo'
 
 function App() {
   const [parameters, setParameters] = useState({
@@ -22,7 +23,8 @@ function App() {
     "In Hospital Regimen": false,
     "Discharge Regimen": false,
     "Vitamins and Minerals": false,
-    "Early Adv Feeds + TPN": false
+    "Early Adv Feeds + TPN": false,
+    "Full Feeds Nut Info": false
   });
 
   const handleParametersSubmit = (params) => {
@@ -57,6 +59,7 @@ function App() {
       {switches["Discharge Regimen"] && <DischargeRegimen birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["Vitamins and Minerals"] && <VitaminMineralsPanel parameters={parameters} />}
       {switches["Early Adv Feeds + TPN"] && <EarlyAdvFeeds birthWeight={parseFloat(parameters.birthWeight)} />}
+      {switches["Full Feeds Nut Info"] && <FullFeedsNutInfo birthWeight={parseFloat(parameters.birthWeight)} />}
 
     </div>
   );

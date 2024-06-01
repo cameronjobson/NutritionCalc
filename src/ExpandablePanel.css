@@ -41,7 +41,7 @@
   }
   
   .expandable-panel-content.open {
-    max-height: 1000px; /* Set to a higher approximate value as needed */
+    max-height: 2000px; /* Set to a higher approximate value as needed */
     padding: 10px;
     visibility: visible;
   }

@@ -44,6 +44,10 @@ function shouldDisableSwitch(switchName, params) {
   if (switchName === "Early Adv Feeds + TPN" && birthWeight >= 2200) {
     return true; // Disable switch under specific conditions
   }
+  if (switchName === "Full Feeds Nut Info" && birthWeight >= 2200) {
+    return true; // Disable switch under specific conditions
+  }
+
 
   return false; // By default, switches are enabled
 }
