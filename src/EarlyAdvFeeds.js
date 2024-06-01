@@ -3,8 +3,18 @@ import ExpandablePanel from './ExpandablePanel';
 import './EarlyAdvFeeds.css';
 
 function EarlyAdvFeeds({ birthWeight }) {
-
-  const [imageVisible, setImageVisible] = useState(false); // State to control the visibility of the image
+  const [imageVisible, setImageVisible] = useState(false);
+  const [moreFeedingAdvImageVisible, setMoreFeedingAdvImageVisible] = useState(false);
+  const [moreCaPhosProlactaImageVisible, setMoreCaPhosProlactaImageVisible] = useState(false);
+  const [subSwitchStates, setSubSwitchStates] = useState({
+    switch1: false,
+    switch2: false,
+    switch3: false,
+    switch4: false,
+    switch5: false,
+    switch6: false
+  });
+  const [selectedImages, setSelectedImages] = useState([]);
 
   const switchDetails = useMemo(() => ({
     switch0: { id: 0, name: "0", imagePath: birthWeight <= 1250 ? '/images/ADVFeedsMore0.png' : '/images/ADVFeedsLess0.png', width: '50px', height: '360px' },
@@ -16,16 +26,20 @@ function EarlyAdvFeeds({ birthWeight }) {
     switch6: { id: 6, name: "170", imagePath: birthWeight <= 1250 ? '/images/ADVFeedsMore6.png' : '/images/ADVFeedsLess6.png', width: '42px', height: '360px' }
   }), [birthWeight]);
 
-  const [subSwitchStates, setSubSwitchStates] = useState({
-    switch1: false,
-    switch2: false,
-    switch3: false,
-    switch4: false,
-    switch5: false,
-    switch6: false
-  });
+  const selectedImage = useMemo(() => {
+    if (birthWeight <= 750) return '/images/MoreTrophic750.png';
+    if (birthWeight > 750 && birthWeight <= 1250) return '/images/MoreTrophic751-1250.png';
+    return '/images/MoreTrophic1250-2200.png';
+  }, [birthWeight]);
 
-  const [selectedImages, setSelectedImages] = useState([]);
+  const feedingAdvImage = useMemo(() => {
+     if (birthWeight <= 1250){
+      return '/images/MoreOnFeeding1250.png';
+     }
+     return '/images/MoreOnFeeding2200.png';
+  }, [birthWeight]);
+
+  const caPhosProlactaImage = '/images/MoreOnCa.png';
 
   const handleSubSwitchChange = (switchKey) => {
     const newState = !subSwitchStates[switchKey];
@@ -46,12 +60,6 @@ function EarlyAdvFeeds({ birthWeight }) {
     setSelectedImages(anyActive ? [{ path: switchDetails.switch0.imagePath, width: switchDetails.switch0.width, height: switchDetails.switch0.height }, ...newSelectedImages] : newSelectedImages);
   };
 
-  const selectedImage = useMemo(() => {
-    if (birthWeight <= 750) return '/images/MoreTrophic750.png';
-    if (birthWeight > 750 && birthWeight <= 1250) return '/images/MoreTrophic751-1250.png';
-    return '/images/MoreTrophic1250-2200.png';
-  }, [birthWeight]);
-
   return (
     <ExpandablePanel title="Early Adv feeds + TPN">
       {Object.entries(switchDetails)
@@ -69,25 +77,53 @@ function EarlyAdvFeeds({ birthWeight }) {
             </label>
           </div>
       ))}
-      <div className="image-container scale-down"> {/* Apply the scaling class to the container */}
+      <div className="image-container scale-down">
         {selectedImages.map((image, index) => (
           <img src={image.path} alt={`Nutritional Plan Day ${index}`} style={{ width: image.width, height: image.height }} key={index} />
         ))}
       </div>
       <div>
-      <label>
-        More on Trophic Feeds
-        <input
-          type="checkbox"
-          checked={imageVisible}
-          onChange={() => setImageVisible(!imageVisible)} // Toggle visibility state
-          style={{ marginLeft: '10px' }}
-        />
-      </label>
-      {imageVisible && (
-        <img src={selectedImage} alt="Birth Weight Based Image" style={{ width: '476px', height: '267px' }} />
-      )}
-    </div>
+        <label>
+          More on Trophic Feeds
+          <input
+            type="checkbox"
+            checked={imageVisible}
+            onChange={() => setImageVisible(!imageVisible)}
+            style={{ marginLeft: '10px' }}
+          />
+        </label>
+        {imageVisible && (
+          <img src={selectedImage} alt="Trophic Feeds" style={{ width: '476px', height: '267px' }} />
+        )}
+      </div>
+      <div>
+        <label>
+          More on Feeding Advancements
+          <input
+            type="checkbox"
+            checked={moreFeedingAdvImageVisible}
+            onChange={() => setMoreFeedingAdvImageVisible(!moreFeedingAdvImageVisible)}
+            style={{ marginLeft: '10px' }}
+          />
+        </label>
+        {moreFeedingAdvImageVisible && (
+          <img src={feedingAdvImage} alt="Feeding Advancements" style={{ width: '476px', height: '267px' }} />
+        )}
+      </div>
+      <div>
+        <label>
+          More on Ca/Phos and Prolacta
+          <input
+            type="checkbox"
+            checked={moreCaPhosProlactaImageVisible}
+            onChange={() => setMoreCaPhosProlactaImageVisible(!moreCaPhosProlactaImageVisible)}
+            style={{ marginLeft: '10px' }}
+          />
+        </label>
+        {moreCaPhosProlactaImageVisible && (
+          <img src={caPhosProlactaImage} alt="Ca/Phos and Prolacta" style={{ width: '476px', height: '267px' }} />
+        )}
+      </div>
     </ExpandablePanel>
   );
 }

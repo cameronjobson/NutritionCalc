@@ -41,6 +41,10 @@ function shouldDisableSwitch(switchName, params) {
   if (switchName === "Early NPO or trophic feeds + TPN" && birthWeight >= 1500) {
     return true; // Disable switch under specific conditions
   }
+  if (switchName === "Early Adv Feeds + TPN" && birthWeight >= 2200) {
+    return true; // Disable switch under specific conditions
+  }
+
   return false; // By default, switches are enabled
 }
 
