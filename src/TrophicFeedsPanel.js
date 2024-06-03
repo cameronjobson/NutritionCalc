@@ -44,7 +44,7 @@ function EarlyAdvFeeds({ birthWeight }) {
   };
 
   return (
-    <ExpandablePanel title="Early Adv feeds + TPN">
+    <ExpandablePanel title="Early NPO or trophic feeds + TPN">
       {Object.entries(switchDetails)
         .filter(([key]) => key !== 'switch0')  // Exclude Day 0 from the UI controls
         .map(([key, { name }]) => (

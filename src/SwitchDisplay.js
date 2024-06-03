@@ -47,8 +47,12 @@ function shouldDisableSwitch(switchName, params) {
   if (switchName === "Full Feeds Nut Info" && birthWeight >= 2200) {
     return true; // Disable switch under specific conditions
   }
-
-
+  if (switchName === "Poor Growth" && birthWeight >= 2200) {
+    return true; // Disable switch under specific conditions
+  }
+  if (switchName === "Fluid Restriction" && birthWeight >= 2200) {
+    return true; // Disable switch under specific conditions
+  }
   return false; // By default, switches are enabled
 }
 

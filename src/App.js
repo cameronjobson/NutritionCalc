@@ -10,6 +10,10 @@ import DischargeRegimen from './DischargeRegimen';
 import VitaminMineralsPanel from './VitaminsMinerals';
 import EarlyAdvFeeds from './EarlyAdvFeeds';
 import FullFeedsNutInfo from './FullFeedsNutInfo'
+import PoorGrowth from './PoorGrowth'
+import FluidRestriction from './FluidRestriction'
+import DBiliAndLipids from './DBiliAndLipids'
+import GrowthTargets from './GrowthTargets';
 
 function App() {
   const [parameters, setParameters] = useState({
@@ -24,8 +28,11 @@ function App() {
     "Discharge Regimen": false,
     "Vitamins and Minerals": false,
     "Early Adv Feeds + TPN": false,
-    "Full Feeds Nut Info": false
-  });
+    "Full Feeds Nut Info": false,
+    "Poor Growth": false,
+    "Fluid Restriction": false,
+    "D Bili and Lipids": false,
+    "Growth Targets": false  });
 
   const handleParametersSubmit = (params) => {
     setParameters(params);
@@ -60,7 +67,10 @@ function App() {
       {switches["Vitamins and Minerals"] && <VitaminMineralsPanel parameters={parameters} />}
       {switches["Early Adv Feeds + TPN"] && <EarlyAdvFeeds birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["Full Feeds Nut Info"] && <FullFeedsNutInfo birthWeight={parseFloat(parameters.birthWeight)} />}
-
+      {switches["Poor Growth"] && <PoorGrowth birthWeight={parseFloat(parameters.birthWeight)} />}
+      {switches["Fluid Restriction"] && <FluidRestriction birthWeight={parseFloat(parameters.birthWeight)} />}
+      {switches["D Bili and Lipids"] && <DBiliAndLipids birthWeight={parseFloat(parameters.birthWeight)} />}
+      {switches["Growth Targets"] && <GrowthTargets birthWeight={parseFloat(parameters.birthWeight)} />}
     </div>
   );
 }
