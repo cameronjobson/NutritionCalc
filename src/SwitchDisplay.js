@@ -53,6 +53,9 @@ function shouldDisableSwitch(switchName, params) {
   if (switchName === "Fluid Restriction" && birthWeight >= 2200) {
     return true; // Disable switch under specific conditions
   }
+  if (switchName === "Refeeding Syndrome" && birthWeight >= 750) {
+    return true; // Disable switch under specific conditions
+  }
   return false; // By default, switches are enabled
 }
 

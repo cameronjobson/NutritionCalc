@@ -32,6 +32,7 @@ function MalnutritionCalc() {
                 <div>
                     <label>
                         Enter Birth z Score:
+                        <div style={{ marginLeft: '20px', fontSize: '12px'  }}>Or chosen ideal weight for LGA or erroneous birth weight</div>
                         <input
                             type="number"
                             step="0.01"

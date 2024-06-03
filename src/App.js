@@ -14,6 +14,7 @@ import PoorGrowth from './PoorGrowth'
 import FluidRestriction from './FluidRestriction'
 import DBiliAndLipids from './DBiliAndLipids'
 import GrowthTargets from './GrowthTargets';
+import RefeedingSyndrome from './RefeedingSyndrome';
 
 function App() {
   const [parameters, setParameters] = useState({
@@ -21,7 +22,6 @@ function App() {
     birthWeight: ''
   });
   const [switches, setSwitches] = useState({
-    "Special Condition Information": false,
     "Malnutrition Calc": false,
     "Early NPO or trophic feeds + TPN": false,
     "In Hospital Regimen": false,
@@ -32,7 +32,9 @@ function App() {
     "Poor Growth": false,
     "Fluid Restriction": false,
     "D Bili and Lipids": false,
-    "Growth Targets": false  });
+    "Growth Targets": false,
+    "Refeeding Syndrome": false
+  });
 
   const handleParametersSubmit = (params) => {
     setParameters(params);
@@ -59,7 +61,6 @@ function App() {
           ))}
         </div>
       )}
-      {switches["Special Condition Information"] && <ExpandablePanel title="Special Condition Information" />}
       {switches["Malnutrition Calc"] && <MalnutritionCalc />}
       {switches["Early NPO or trophic feeds + TPN"] && <TrophicFeedsPanel birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["In Hospital Regimen"] && <InHospitalRegimen birthWeight={parseFloat(parameters.birthWeight)} />}
@@ -71,6 +72,7 @@ function App() {
       {switches["Fluid Restriction"] && <FluidRestriction birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["D Bili and Lipids"] && <DBiliAndLipids birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["Growth Targets"] && <GrowthTargets birthWeight={parseFloat(parameters.birthWeight)} />}
+      {switches["Refeeding Syndrome"] && <RefeedingSyndrome birthWeight={parseFloat(parameters.birthWeight)} />}
     </div>
   );
 }
