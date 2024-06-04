@@ -16,6 +16,32 @@ function EarlyAdvFeeds({ birthWeight }) {
   });
   const [selectedImages, setSelectedImages] = useState([]);
 
+  const handleSelectAll = () => {
+    const allSwitchesOn = {
+      switch1: true,
+      switch2: true,
+      switch3: true,
+      switch4: true,
+      switch5: true,
+      switch6: true
+    };
+
+    setSubSwitchStates(allSwitchesOn);
+
+    const allSelectedImages = Object.entries(allSwitchesOn)
+        .filter(([key, value]) => value)
+        .map(([key]) => ({
+            id: switchDetails[key].id,
+            imagePath: switchDetails[key].imagePath,
+            width: switchDetails[key].width,
+            height: switchDetails[key].height
+        }))
+        .sort((a, b) => a.id - b.id)
+        .map(item => ({ path: item.imagePath, width: item.width, height: item.height }));
+
+    setSelectedImages([{ path: switchDetails.switch0.imagePath, width: switchDetails.switch0.width, height: switchDetails.switch0.height }, ...allSelectedImages]);
+  };
+
   const switchDetails = useMemo(() => ({
     switch0: { id: 0, name: "0", imagePath: birthWeight <= 1250 ? '/images/ADVFeedsMore0.png' : '/images/ADVFeedsLess0.png', width: '50px', height: '360px' },
     switch1: { id: 1, name: "20", imagePath: birthWeight <= 1250 ? '/images/ADVFeedsMore1.png' : '/images/ADVFeedsLess1.png', width: '42px', height: '360px' },
@@ -62,6 +88,7 @@ function EarlyAdvFeeds({ birthWeight }) {
 
   return (
     <ExpandablePanel title="Early Adv feeds + TPN">
+      <button onClick={handleSelectAll}>Select All</button>
       {Object.entries(switchDetails)
         .filter(([key]) => key !== 'switch0')  // Exclude Day 0 from the UI controls
         .map(([key, { name }]) => (
