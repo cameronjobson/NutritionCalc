@@ -26,12 +26,12 @@ function App() {
     "Early NPO or trophic feeds + TPN": false,
     "In Hospital Regimen": false,
     "Discharge Regimen": false,
-    "Vitamins and Minerals": false,
+    "Vitamins & Minerals": false,
     "Early Adv Feeds + TPN": false,
     "Full Feeds Nut Info": false,
     "Poor Growth": false,
     "Fluid Restriction": false,
-    "D Bili and Lipids": false,
+    "D Bili & Lipids": false,
     "Growth Targets": false,
     "Refeeding Syndrome": false
   });
@@ -65,12 +65,12 @@ function App() {
       {switches["Early NPO or trophic feeds + TPN"] && <TrophicFeedsPanel birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["In Hospital Regimen"] && <InHospitalRegimen birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["Discharge Regimen"] && <DischargeRegimen birthWeight={parseFloat(parameters.birthWeight)} />}
-      {switches["Vitamins and Minerals"] && <VitaminsMinerals birthWeight={parseFloat(parameters.birthWeight)} />}
+      {switches["Vitamins & Minerals"] && <VitaminsMinerals parameters={parameters} />}
       {switches["Early Adv Feeds + TPN"] && <EarlyAdvFeeds birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["Full Feeds Nut Info"] && <FullFeedsNutInfo birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["Poor Growth"] && <PoorGrowth birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["Fluid Restriction"] && <FluidRestriction birthWeight={parseFloat(parameters.birthWeight)} />}
-      {switches["D Bili and Lipids"] && <DBiliAndLipids birthWeight={parseFloat(parameters.birthWeight)} />}
+      {switches["D Bili & Lipids"] && <DBiliAndLipids birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["Growth Targets"] && <GrowthTargets birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["Refeeding Syndrome"] && <RefeedingSyndrome birthWeight={parseFloat(parameters.birthWeight)} />}
     </div>
