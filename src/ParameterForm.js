@@ -1,16 +1,13 @@
-// File retreves patient data from the user
-// ParameterForm.js
-import './SwitchDisplay.css';
+import './ParameterForm.css';
 import React, { useState } from 'react';
 
 function ParameterForm({ onParametersSubmit }) {
-  const [gestAgeWeeks, setGestAgeWeeks] = useState('');
-  const [gestAgeDays, setGestAgeDays] = useState('');
   const [birthWeight, setBirthWeight] = useState('');
+  const [isLessThan36Weeks, setIsLessThan36Weeks] = useState();  // No initial state set
+  const [totalGestAgeDays, setTotalGestAgeDays] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const totalGestAgeDays = parseInt(gestAgeWeeks) * 7 + parseInt(gestAgeDays);
     onParametersSubmit({
       gestAgeDays: totalGestAgeDays,
       birthWeight
@@ -19,18 +16,34 @@ function ParameterForm({ onParametersSubmit }) {
 
   return (
     <form onSubmit={handleSubmit} className="parameter-form">
-      <input
-        type="number"
-        value={gestAgeWeeks}
-        onChange={(e) => setGestAgeWeeks(e.target.value)}
-        placeholder="Gestational Age (Weeks)"
-      />
-      <input
-        type="number"
-        value={gestAgeDays}
-        onChange={(e) => setGestAgeDays(e.target.value)}
-        placeholder="Gestational Age (Days)"
-      />
+      <label>
+        <input 
+          type="radio" 
+          name="gestationalAge" 
+          value="lessThan36" 
+          checked={isLessThan36Weeks === true}  // Check if true
+          onChange={() => {
+            setTotalGestAgeDays(35)
+            setIsLessThan36Weeks(true);
+          }}
+        />
+        Less than 36 Weeks
+      </label>
+      <div></div>
+      <label>
+        <input 
+          type="radio" 
+          name="gestationalAge" 
+          value="moreThan36" 
+          checked={isLessThan36Weeks === false}  // Check if false
+          onChange={() => {
+            setTotalGestAgeDays(37)
+            setIsLessThan36Weeks(false);
+          }}
+        />
+        More than 36 Weeks
+      </label>
+
       <input
         type="number"
         value={birthWeight}

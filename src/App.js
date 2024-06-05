@@ -56,7 +56,7 @@ function App() {
               key={index}
               label={switchName}
               onSwitchChange={handleSwitchChange}
-              parameters={parameters}
+              parameters={parameters} // Pass parameters here
             />
           ))}
         </div>

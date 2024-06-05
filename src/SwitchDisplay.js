@@ -24,13 +24,17 @@ function SwitchDisplay({ label, onSwitchChange, parameters }) {
 
   const buttonClass = `switch-display-button ${isEnabled ? 'enabled' : ''} ${disabled ? 'disabled' : ''}`;
 
+  // Determine the label text for "Refeeding Syndrome"
+  const isSGA = parameters.gestAgeDays && parameters.gestAgeDays < 36;
+  const displayLabel = label === "Refeeding Syndrome" && isSGA ? "Refeeding Syndrome (if SGA)" : label;
+
   return (
     <button 
       className={buttonClass}
       onClick={handleToggle}
       disabled={disabled}
     >
-      {label}
+      {displayLabel}
     </button>
   );
 }
