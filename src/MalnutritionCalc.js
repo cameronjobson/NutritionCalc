@@ -28,41 +28,49 @@ function MalnutritionCalc() {
 
     return (
         <ExpandablePanel title="Malnutrition Calculation">
-            <div style={{ padding: '10px' }}>
-                <div>
-                    <label>
-                        Enter Birth z Score:
-                        <div style={{ marginLeft: '20px', fontSize: '12px'  }}>Or chosen ideal weight for LGA or erroneous birth weight</div>
-                        <input
-                            type="number"
-                            step="0.01"
-                            value={birthZScore}
-                            onChange={e => setBirthZScore(e.target.value)}
-                            style={{ margin: '5px' }}
-                        />
-                    </label>
+          <div style={{ padding: '10px' }}>
+            <div>
+              <label>
+                Enter Birth z Score:
+                <input
+                  type="number"
+                  step="0.01"
+                  value={birthZScore}
+                  onChange={(e) => setBirthZScore(e.target.value)}
+                  style={{ float: 'right', width: '60px', padding: '5px' }}
+                  maxLength={3}
+                />
+                <div style={{ fontSize: '12px' }}>
+                  Or chosen ideal weight for <br></br> LGA or erroneous birth weight
                 </div>
-                <div>
-                    <label>
-                        Enter Current z Score:
-                        <input
-                            type="number"
-                            step="0.01"
-                            value={currentZScore}
-                            onChange={e => setCurrentZScore(e.target.value)}
-                            style={{ margin: '5px' }}
-                        />
-                    </label>
-                </div>
-                <button onClick={handleSubmit} style={{ margin: '10px' }}>
-                    Submit
-                </button>
-                {result && (
-                    <p>Change in z score is {result} and therefore has {classification} malnutrition.</p>
-                )}
+            
+              </label>
             </div>
+            <div>
+              <label>
+                Enter Current z Score:
+                <input
+                  type="number"
+                  step="0.01"
+                  value={currentZScore}
+                  onChange={(e) => setCurrentZScore(e.target.value)}
+                  style={{ float: 'right', width: '60px', padding: '5px' }}
+                  maxLength={3}
+                />
+              </label>
+            </div>
+            <button onClick={handleSubmit} style={{ margin: '10px' }}>
+              Submit
+            </button>
+            {result && (
+              <p>
+                Change in z score is {result} and therefore has {classification} malnutrition.
+              </p>
+            )}
+          </div>
         </ExpandablePanel>
-    );
+      );
+    
 }
 
 export default MalnutritionCalc;

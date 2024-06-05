@@ -97,21 +97,26 @@ a:hover {
 
 .switches-container {
   display: grid;
-  grid-auto-flow: column; /* Directs items to flow into new columns rather than new rows */
-  grid-template-rows: repeat(2, 1fr); /* Ensures exactly two rows */
   grid-auto-columns: minmax(120px, 1fr); /* Dynamic column width based on content, with a minimum and flexible maximum */
   gap: 10px; /* Space between the components */
   padding: 20px; /* Padding around the grid */
   overflow-x: auto; /* Allows horizontal scrolling if more items than can fit */
 }
 
-@media (max-width: 768px) {
+/* For screens wider than 600px */
+@media (min-width: 751px) {
   .switches-container {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  }
-
-  .SwitchDisplay {
-    max-width: 150px; /* Smaller max width for smaller screens */
+    grid-auto-flow: column; /* Directs items to flow into new columns rather than new rows */
+    grid-template-rows: repeat(2, 1fr); /* Ensures exactly two rows */
   }
 }
+
+/* For screens 600px wide or less */
+@media (max-width: 750px) {
+  .switches-container {
+    grid-auto-flow: row; /* Directs items to flow into new rows rather than new columns */
+    grid-template-columns: repeat(2, 1fr); /* Ensures exactly two columns */
+  }
+}
+
 

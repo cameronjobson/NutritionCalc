@@ -44,5 +44,5 @@
     max-height: 2000px; /* Set to a higher approximate value as needed */
     padding: 10px;
     visibility: visible;
+    min-width: 300px;
   }
-  
