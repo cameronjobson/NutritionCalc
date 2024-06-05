@@ -1,60 +1,61 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import ExpandablePanel from './ExpandablePanel';
-import './VitaminMinerals.css'
 
+function VitaminsMinerals({ birthWeight }) {
 
-function VitaminMineralsPanel() {
-    const [selectedInfo, setSelectedInfo] = useState(null);
-  
-    const infoDetails = {
-      vitaminA: {
-        name: "EBM/DBM with Prolacta",
-        details: "Details about Vitamin A, including dosage and benefits."
-      },
-      vitaminB12: {
-        name: "EBM/DBM with HMF 1:25",
-        details: "Information on Vitamin B12, including how it helps with red blood cells."
-      },
-      vitaminC: {
-        name: "Over 75% preterm formula",
-        details: "Details about Vitamin C, its antioxidant properties, and immune support."
-      },
-      calcium: {
-        name: "EBM 1:50 or EBM/HMF 1:25",
-        details: "Information about Calcium, important for bone health and muscle function."
-      },
-      iron: {
-        name: "Transitional Formula",
-        details: "Details about Iron, crucial for blood production and oxygen transport."
-      },
-      zinc: {
-        name: "EBM and/or Term Formula",
-        details: "Information on Zinc, essential for immune function and metabolism."
-      }
-    };
-  
-    const handleButtonClick = (key) => {
-      setSelectedInfo(infoDetails[key]);
-    };
-  
-    return (
-      <ExpandablePanel title="Vitamins and Minerals Supplement Details">
-        <div className="flex-container">
-          <div className="buttons-container">
-            {Object.entries(infoDetails).map(([key, { name }]) => (
-              <button key={key} onClick={() => handleButtonClick(key)} className="vitamin-button">
-                {name}
-              </button>
-            ))}
-          </div>
-          {selectedInfo && (
-            <div className="detail-container">
-              <p><strong>{selectedInfo.name}:</strong> {selectedInfo.details}</p>
-            </div>
-          )}
-        </div>
-      </ExpandablePanel>
-    );
+  const lastSentence = (birthWeight) => {
+    if (birthWeight < 2500){
+      return "Poly-vi-sol with Fe 1 mL/d";
+    }
+    return "D-visol 400IU<br></br>Vitamin D needs met (400IU/d) when<br></br>taking 1000 mL/d of Term formula<br></br>Begin when tolerating full feeds";
   }
-  
-  export default VitaminMineralsPanel;
+
+      return (
+        <ExpandablePanel title="Vitamins & Minerals">
+            <div>
+            <ExpandablePanel title="EBM/DBM with Prolacta">
+              <div>
+              <p>Poly-vi-sol 0.5 mL BID<br></br>Fe 2-4 mg/kg/d<br></br>Begin DOL 14 and on full feeds</p>
+              </div>
+            </ExpandablePanel>
+            <ExpandablePanel title="EBM/DBM with HMF 1:25">
+              <div>
+              <p>D-vi-sol 400 IU<br></br>Fe 2-4 mg/kg/d<br></br>Begin DOL 14 and on full feeds</p>
+              </div>
+            </ExpandablePanel>
+            <ExpandablePanel title="Over 75% Preterm Formula">
+              <div>
+              <p>May benefit from Fe 2-3 mg/kg/d<br></br>Begin DOL 14 and on full feeds</p>
+              </div>
+            </ExpandablePanel>
+            <ExpandablePanel title="EBM and SSC30 or PE30">
+              <div>
+              <p>Poly-vi-sol with Fe 1 mL/d<br></br>Begin DOL 14 and on full feeds</p>
+              </div>
+            </ExpandablePanel>
+            <ExpandablePanel title="EBM 1:50 or EBM/HMF 1:25 for D/C Regimen">
+              <div>
+              <p>Poly-vi-sol with Fe 1 mL/d<br></br>Begin DOL 14 and on full feeds</p>
+              </div>
+            </ExpandablePanel>
+            <ExpandablePanel title="Transitional Formula or EBM with Transitional Formula">
+              <div>
+              <p>Poly-vi-sol with Fe 1 mL/d
+              <br></br>Vitamin D needs met (400IU/d) when
+              <br></br>taking 800 mL/d
+              <br></br>of Transitional Formula
+              <br></br>Begin DOL 14 and on full feeds
+              </p>
+              </div>
+            </ExpandablePanel>
+            <ExpandablePanel title="EBM and/or Term Formula">
+              <div>
+              <p dangerouslySetInnerHTML={{ __html: lastSentence(birthWeight) }}></p>
+              </div>
+            </ExpandablePanel>
+            </div>
+        </ExpandablePanel>
+      )
+}
+
+export default VitaminsMinerals;

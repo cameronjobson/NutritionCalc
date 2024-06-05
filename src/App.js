@@ -7,7 +7,7 @@ import TrophicFeedsPanel from './TrophicFeedsPanel';
 import MalnutritionCalc from './MalnutritionCalc';
 import InHospitalRegimen from './InHospitalRegimen';
 import DischargeRegimen from './DischargeRegimen';
-import VitaminMineralsPanel from './VitaminsMinerals';
+import VitaminsMinerals from './VitaminsMinerals';
 import EarlyAdvFeeds from './EarlyAdvFeeds';
 import FullFeedsNutInfo from './FullFeedsNutInfo'
 import PoorGrowth from './PoorGrowth'
@@ -65,7 +65,7 @@ function App() {
       {switches["Early NPO or trophic feeds + TPN"] && <TrophicFeedsPanel birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["In Hospital Regimen"] && <InHospitalRegimen birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["Discharge Regimen"] && <DischargeRegimen birthWeight={parseFloat(parameters.birthWeight)} />}
-      {switches["Vitamins and Minerals"] && <VitaminMineralsPanel parameters={parameters} />}
+      {switches["Vitamins and Minerals"] && <VitaminsMinerals birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["Early Adv Feeds + TPN"] && <EarlyAdvFeeds birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["Full Feeds Nut Info"] && <FullFeedsNutInfo birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["Poor Growth"] && <PoorGrowth birthWeight={parseFloat(parameters.birthWeight)} />}
