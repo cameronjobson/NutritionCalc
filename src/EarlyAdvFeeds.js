@@ -58,12 +58,31 @@ function EarlyAdvFeeds({ birthWeight }) {
     return '/images/MoreTrophic1250-2200.png';
   }, [birthWeight]);
 
+  const imageStyle = useMemo(() => {
+    if (selectedImage === '/images/MoreTrophic750.png') {
+        return { width: '476px', height: '267px' };  // New dimensions for "2200+" image
+    }
+    if (selectedImage === '/images/MoreTrophic751-1250.png') {
+        return { width: '476px', height: '267px' };  // New dimensions for "2200+" image
+    }
+    if (selectedImage === '/images/MoreOnFeeding1250.png') {
+      return { width: '476px', height: '267px' };  // New dimensions for "2200+" image
+    }
+    if (selectedImage === '/images/MoreOnFeeding2200.png') {
+      return { width: '476px', height: '267px' };  // New dimensions for "2200+" image
+    }
+
+    return { width: '476px', height: '267px' }; // Default dimensions
+}, [selectedImage]);
+
   const feedingAdvImage = useMemo(() => {
      if (birthWeight <= 1250){
       return '/images/MoreOnFeeding1250.png';
      }
      return '/images/MoreOnFeeding2200.png';
   }, [birthWeight]);
+
+
 
   const caPhosProlactaImage = '/images/MoreOnCa.png';
 
@@ -120,7 +139,7 @@ function EarlyAdvFeeds({ birthWeight }) {
           />
         </label>
         {imageVisible && (
-          <img src={selectedImage} alt="Trophic Feeds" style={{ width: '476px', height: '267px' }} />
+          <img src={selectedImage} alt="Trophic Feeds" style={imageStyle} />
         )}
       </div>
       <div>
@@ -134,7 +153,7 @@ function EarlyAdvFeeds({ birthWeight }) {
           />
         </label>
         {moreFeedingAdvImageVisible && (
-          <img src={feedingAdvImage} alt="Feeding Advancements" style={{ width: '476px', height: '267px' }} />
+          <img src={feedingAdvImage} alt="Feeding Advancements" style={imageStyle} />
         )}
       </div>
       <div>
@@ -148,7 +167,7 @@ function EarlyAdvFeeds({ birthWeight }) {
           />
         </label>
         {moreCaPhosProlactaImageVisible && (
-          <img src={caPhosProlactaImage} alt="Ca/Phos and Prolacta" style={{ width: '476px', height: '267px' }} />
+          <img src={caPhosProlactaImage} alt="Ca/Phos and Prolacta" style={{ width: '376px', height: '330px' }} />
         )}
       </div>
     </ExpandablePanel>

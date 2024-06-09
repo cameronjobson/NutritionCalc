@@ -19,6 +19,9 @@ function InHospitalRegimen({ birthWeight }) {
         if (selectedImage === '/images/InHospitalRegimen2200+.png') {
             return { width: '476px', height: '106px' };  // New dimensions for "2200+" image
         }
+        if (selectedImage === '/images/InHospitalRegimen1250.png') {
+            return { width: '406px', height: '267px' };  // New dimensions for "2200+" image
+        }
         return { width: '476px', height: '267px' }; // Default dimensions
     }, [selectedImage]);
 
