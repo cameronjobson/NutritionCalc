@@ -9,7 +9,7 @@
     text-align: left;
     padding: 10px;
     font-size: 16px;
-    background-color: #e0e0e0; /* Light grey for unselected state */
+    background-color: #0057a9; /* Light grey for unselected state */
     border: none;
     cursor: pointer;
     outline: none; /* Removes focus outline */
@@ -17,7 +17,7 @@
   }
   
   .expandable-panel-button:hover {
-    background-color: #cccccc; /* Darker grey on hover for better interaction feedback */
+    background-color: #008ef3; /* Darker grey on hover for better interaction feedback */
   }
   
   /* Icon before the title, rotates when open */

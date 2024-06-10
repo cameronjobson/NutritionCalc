@@ -27,7 +27,7 @@ function ParameterForm({ onParametersSubmit }) {
             setIsLessThan36Weeks(true);
           }}
         />
-        Less than 36 Weeks
+        &lt;/=35w
       </label>
       <div></div>
       <label>
@@ -41,7 +41,7 @@ function ParameterForm({ onParametersSubmit }) {
             setIsLessThan36Weeks(false);
           }}
         />
-        More than 36 Weeks
+        &gt;/= 36w
       </label>
 
       <input
