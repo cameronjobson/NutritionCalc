@@ -25,7 +25,7 @@ function SwitchDisplay({ label, onSwitchChange, parameters }) {
   const buttonClass = `switch-display-button ${isEnabled ? 'enabled' : ''} ${disabled ? 'disabled' : ''}`;
 
   // Determine the label text for "Refeeding Syndrome"
-  const isSGA = parameters.gestAgeDays && parameters.gestAgeDays < 36;
+  const isSGA = parameters.birthWeight >= 750 && parameters.gestAgeDays < 36;
   const displayLabel = label === "Refeeding Syndrome" && isSGA ? "Refeeding Syndrome (if SGA)" : label;
 
   return (
@@ -57,7 +57,7 @@ function shouldDisableSwitch(switchName, params) {
   if (switchName === "Fluid Restriction" && birthWeight >= 2200) {
     return true; // Disable switch under specific conditions
   }
-  if (switchName === "Refeeding Syndrome" && birthWeight >= 750) {
+  if (switchName === "Refeeding Syndrome" && (gestAgeDays >= 36 && birthWeight >= 750)) {
     return true; // Disable switch under specific conditions
   }
   return false; // By default, switches are enabled

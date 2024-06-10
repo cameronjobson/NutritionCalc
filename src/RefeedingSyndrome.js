@@ -6,7 +6,7 @@ function RefeedingSyndrome({ birthWeight }) {
       return (
         <ExpandablePanel title="Refeeding Syndrome">
             <div>
-                {(<img src={'/images/RefeedingSyndromeImage.png'} alt="Trophic Feeds" style={{ width: '476px', height: '267px' }} />)}
+                {(<img src={'/images/RefeedingSyndromeImage.png'} alt="Trophic Feeds" style={{ width: '476px', height: '367px' }} />)}
             </div>
         </ExpandablePanel>
       )

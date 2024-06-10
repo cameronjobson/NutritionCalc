@@ -21,6 +21,7 @@ function App() {
     gestAgeDays: '',
     birthWeight: ''
   });
+  
   const [switches, setSwitches] = useState({
     "Malnutrition Calc": false,
     "Early NPO or trophic feeds + TPN": false,

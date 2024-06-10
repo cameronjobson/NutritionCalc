@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ExpandablePanel.css';
 
-function ExpandablePanel({ title, children }) {
-  const [isOpen, setIsOpen] = useState(false);
+function ExpandablePanel({ title, children, defaultOpen = true }) {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
 
   const togglePanel = () => {
     setIsOpen(!isOpen);
   };
+
+  // Optional: Effect to handle prop changes, if you need to allow external control to reset the open state
+  useEffect(() => {
+    setIsOpen(defaultOpen);
+  }, [defaultOpen]);
 
   return (
     <div className="expandable-panel">
