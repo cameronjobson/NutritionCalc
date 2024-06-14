@@ -53,7 +53,7 @@ function App() {
         {/* Header Section */}
       <header className="NeoTool-header">
         <p></p>
-        <p> Please report bugs to Cameron Jobson => Email: <a href="mailto:cameronajobson@gmail.com">cameronajobson@gmail.com</a> Phone: <a href="tel:+18173198996">817-319-8996</a></p>
+        <p> Please report bugs to Cameron Jobson =&gt; Email: <a href="mailto:cameronajobson@gmail.com">cameronajobson@gmail.com</a> Phone: <a href="tel:+18173198996">817-319-8996</a></p>
       </header>
       </div>
       <ParameterForm onParametersSubmit={handleParametersSubmit} />

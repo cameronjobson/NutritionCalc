@@ -43,13 +43,13 @@ function EarlyAdvFeeds({ birthWeight }) {
   };
 
   const switchDetails = useMemo(() => ({
-    switch0: { id: 0, name: "0", imagePath: birthWeight <= 1250 ? '/images/ADVFeedsMore0.png' : '/images/ADVFeedsLess0.png', width: '50px', height: '360px' },
-    switch1: { id: 1, name: "20", imagePath: birthWeight <= 1250 ? '/images/ADVFeedsMore1.png' : '/images/ADVFeedsLess1.png', width: '42px', height: '360px' },
-    switch2: { id: 2, name: "50", imagePath: birthWeight <= 1250 ? '/images/ADVFeedsMore2.png' : '/images/ADVFeedsLess2.png', width: '42px', height: '360px' },
-    switch3: { id: 3, name: "80", imagePath: birthWeight <= 1250 ? '/images/ADVFeedsMore3.png' : '/images/ADVFeedsLess3.png', width: '42px', height: '360px' },
-    switch4: { id: 4, name: "110", imagePath: birthWeight <= 1250 ? '/images/ADVFeedsMore4.png' : '/images/ADVFeedsLess4.png', width: '42px', height: '360px' },
-    switch5: { id: 5, name: "140", imagePath: birthWeight <= 1250 ? '/images/ADVFeedsMore5.png' : '/images/ADVFeedsLess5.png', width: '42px', height: '360px' },
-    switch6: { id: 6, name: "170", imagePath: birthWeight <= 1250 ? '/images/ADVFeedsMore6.png' : '/images/ADVFeedsLess6.png', width: '42px', height: '360px' }
+    switch0: { id: 0, name: "0", imagePath: birthWeight > 1250 ? '/images/ADVFeedsMore0.png' : '/images/ADVFeedsLess0.png', width: '50px', height: '360px' },
+    switch1: { id: 1, name: "20", imagePath: birthWeight > 1250 ? '/images/ADVFeedsMore1.png' : '/images/ADVFeedsLess1.png', width: '42px', height: '360px' },
+    switch2: { id: 2, name: "50", imagePath: birthWeight > 1250 ? '/images/ADVFeedsMore2.png' : '/images/ADVFeedsLess2.png', width: '42px', height: '360px' },
+    switch3: { id: 3, name: "80", imagePath: birthWeight > 1250 ? '/images/ADVFeedsMore3.png' : '/images/ADVFeedsLess3.png', width: '42px', height: '360px' },
+    switch4: { id: 4, name: "110", imagePath: birthWeight > 1250 ? '/images/ADVFeedsMore4.png' : '/images/ADVFeedsLess4.png', width: '42px', height: '360px' },
+    switch5: { id: 5, name: "140", imagePath: birthWeight > 1250 ? '/images/ADVFeedsMore5.png' : '/images/ADVFeedsLess5.png', width: '42px', height: '360px' },
+    switch6: { id: 6, name: "170", imagePath: birthWeight > 1250 ? '/images/ADVFeedsMore6.png' : '/images/ADVFeedsLess6.png', width: '42px', height: '360px' }
   }), [birthWeight]);
 
   const selectedImage = useMemo(() => {
