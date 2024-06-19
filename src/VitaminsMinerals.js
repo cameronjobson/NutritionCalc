@@ -7,7 +7,7 @@ function VitaminsMinerals({ birthWeight }) {
     if (birthWeight < 2500){
       return "Poly-vi-sol with Fe 1 mL/d";
     }
-    return "D-visol 400IU<br></br>Vitamin D needs met (400IU/d) when<br></br>taking 1000 mL/d of Term formula<br></br>Begin when tolerating full feeds";
+    return "D-visol 400IU";
   }
 
       return (
@@ -50,7 +50,7 @@ function VitaminsMinerals({ birthWeight }) {
             </ExpandablePanel>
             <ExpandablePanel title="EBM and/or Term Formula" defaultOpen={false}>
               <div>
-              <p dangerouslySetInnerHTML={{ __html: lastSentence(birthWeight) }}></p>
+              <p dangerouslySetInnerHTML={{ __html: lastSentence(birthWeight) + "<br></br>Vitamin D needs met (400IU/d) when<br></br>taking 1000 mL/d of Term formula<br></br>Begin when tolerating full feeds" }}></p>
               </div>
             </ExpandablePanel>
             </div>
