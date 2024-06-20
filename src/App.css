@@ -146,20 +146,80 @@ a:hover {
   overflow-x: auto; /* Allows horizontal scrolling if more items than can fit */
 }
 
+.parameters-and-switches {
+  display: grid;
+  grid-template-columns: 1fr 5fr; /* Adjust this if more columns are needed */
+  grid-gap: 50px; /* Space between items */
+}
+
+.first-header{
+  display: grid;
+  grid-template-columns: 1fr 3fr; /* Adjust this if more columns are needed */
+  grid-gap: 50px; /* Space between items */
+  align-items: center;
+}
+
+@media (max-width: 1001px) { /* Adjust this breakpoint to your needs */
+  .parameters-and-switches {
+    grid-template-columns: 1fr; /* All items will stack in one column on small screens */
+  }
+  .first-header {
+    grid-template-columns: 1fr; /* All items will stack in one column on small screens */
+  }
+}
+
+.first-header img {
+  display: block; /* Ensures the image does not have inline behavior */
+  max-width: 100%; /* Makes sure the image is responsive and does not overflow its container */
+  height: auto; /* Keeps the image's aspect ratio intact */
+  border: 1px solid #ccc; /* Adds a light grey border around the image */
+  padding: 10px; /* Adds padding around the image */
+  border-radius: 8px; /* Rounds the corners of the image */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15); /* Adds a subtle shadow for depth */
+  margin-bottom: 20px; /* Adds space between the image and the text below it */
+}
+
+
+
 /* For screens wider than 600px */
-@media (min-width: 751px) {
+@media (min-width: 1001px) {
   .switches-container {
     grid-auto-flow: column; /* Directs items to flow into new columns rather than new rows */
     grid-template-rows: repeat(2, 1fr); /* Ensures exactly two rows */
   }
+
 }
 
 /* For screens 600px wide or less */
-@media (max-width: 750px) {
+@media (max-width: 1000px) {
   .switches-container {
     grid-auto-flow: row; /* Directs items to flow into new rows rather than new columns */
     grid-template-columns: repeat(2, 1fr); /* Ensures exactly two columns */
   }
+
 }
 
+.disclaimer {
+  background-color: #f9f9f9; /* Light grey background */
+  border: 1px solid #ccc; /* Grey border */
+  padding: 15px; /* Padding around the text */
+  margin-top: 20px; /* Margin on the top to separate from elements above */
+  font-size: 14px; /* Suitable font size */
+  line-height: 1.6; /* Line height for better readability */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Subtle shadow for 3D effect */
+}
+
+.disclaimer h1, .disclaimer h2, .disclaimer p {
+  margin-top: 0; /* Removes the top margin */
+  margin-bottom: 10px; /* Reduces the bottom margin */
+}
+
+.disclaimer h1 {
+  margin-bottom: 5px; /* Even smaller bottom margin for h1 */
+}
+
+.disclaimer h2 {
+  margin-bottom: 5px; /* Even smaller bottom margin for h2 */
+}
 

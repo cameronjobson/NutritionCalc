@@ -49,6 +49,26 @@ function App() {
 
   return (
     <div className="app-container">
+            <div className="first-header">
+                {(<img src={'/images/pediatrixlogo.jpg'} alt="Trophic Feeds" style={{ width: '430px', height: '240px' }} />)}
+                <div className="disclaimer">
+                <h1>NICU Nutrition Guidline Hub</h1>
+                <h2>(Not Affiliated with Pediatrix)</h2>
+                <p>
+    <strong>Disclaimer:</strong> The tools and information on this site are designed to aid neonatologists in managing and caring for newborns following the Pediatrix Fort Worth guidlines. Please note that I am not affiliated with Pediatrix Fort Worth.
+</p>
+<p>
+    The data and treatment recommendations are meant as a guideline only. Every newborn is unique, and it is critical to consider variations in clinical conditions and responses to treatments. Healthcare professionals should exercise clinical judgment and consult the relevant medical literature and guidelines.
+</p>
+<p>
+    The contributers to this website and I will not be liable for any inaccuracies or errors, nor for actions taken based on the information provided here. Ensuring patient safety and appropriate care should always be a priority, and consultation with experienced colleagues or specialists is recommended.
+</p>
+<p>
+    For inquiries about creating a tailored website for your practice, or to report an issue, please contact me using the info in the header.
+</p>
+
+                </div>
+            </div>
             <div>
         {/* Header Section */}
       <header className="NeoTool-header">
@@ -56,6 +76,7 @@ function App() {
         <p> Please report bugs to Cameron Jobson =&gt; Email: <a href="mailto:cameronajobson@gmail.com">cameronajobson@gmail.com</a> Phone: <a href="tel:+18173198996">817-319-8996</a></p>
       </header>
       </div>
+      <div className="parameters-and-switches">
       <ParameterForm onParametersSubmit={handleParametersSubmit} />
       {hasValidParameters && (
         <div className="switches-container">
@@ -69,6 +90,7 @@ function App() {
           ))}
         </div>
       )}
+      </div>
       {switches["Malnutrition Calc"] && <MalnutritionCalc />}
       {switches["Early NPO or trophic feeds + TPN"] && <TrophicFeedsPanel birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["In Hospital Regimen"] && <InHospitalRegimen birthWeight={parseFloat(parameters.birthWeight)} />}
