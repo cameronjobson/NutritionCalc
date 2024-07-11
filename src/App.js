@@ -53,7 +53,7 @@ function App() {
             <div className="first-header">
                 {(<img src={'/images/pediatrixlogo.jpg'} alt="Trophic Feeds" style={{ width: '430px', height: '240px' }} />)}
                 <div className="disclaimer">
-                <h1>NICU Nutrition Guidline Hub</h1>
+                <h1>NICU Nutrition Guideline Hub</h1>
                 <h2>(Not Affiliated with Pediatrix)</h2>
                 <p>
     <strong>Disclaimer:</strong> The tools and information on this site are designed to aid neonatologists in managing and caring for newborns following the Pediatrix Fort Worth guidlines. Please note that I am not affiliated with Pediatrix Fort Worth.

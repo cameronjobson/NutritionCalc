@@ -11,7 +11,7 @@ function MetabolicBone(){
     return(
         <ExpandablePanel title="Metabolic Bone Disease">
             <div>
-                {(<img src={'/images/MetaBoneMain.png'} alt="Trophic Feeds" style={{ width: '476px', height: '267px' }} />)}
+                {(<img src={'/images/MetaBoneMain.png'} alt="Trophic Feeds" style={{ width: '576px', height: '367px' }} />)}
             </div>
             <div>
                 <label>
