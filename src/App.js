@@ -15,26 +15,27 @@ import FluidRestriction from './FluidRestriction'
 import DBiliAndLipids from './DBiliAndLipids'
 import GrowthTargets from './GrowthTargets';
 import RefeedingSyndrome from './RefeedingSyndrome';
+import MetabolicBone from './MetabolicBone';
 
 function App() {
   const [parameters, setParameters] = useState({
     gestAgeDays: '',
     birthWeight: ''
   });
-  
+
   const [switches, setSwitches] = useState({
-    "Malnutrition Calc": false,
-    "Early NPO or trophic feeds + TPN": false,
     "In Hospital Regimen": false,
     "Discharge Regimen": false,
-    "Vitamins & Minerals": false,
+    "Early NPO or trophic feeds + TPN": false,
     "Early Adv Feeds + TPN": false,
-    "Full Feeds Nut Info": false,
+    "Refeeding Syndrome": false,
     "Poor Growth": false,
-    "Fluid Restriction": false,
-    "D Bili & Lipids": false,
+    "Vitamins & Minerals": false,
     "Growth Targets": false,
-    "Refeeding Syndrome": false
+    "Fluid Restriction": false,
+    "Full Feeds Nut Info": false,
+    "Metabolic Bone Disease": false,
+    "D Bili & Lipids": false,
   });
 
   const handleParametersSubmit = (params) => {
@@ -91,18 +92,18 @@ function App() {
         </div>
       )}
       </div>
-      {switches["Malnutrition Calc"] && <MalnutritionCalc />}
-      {switches["Early NPO or trophic feeds + TPN"] && <TrophicFeedsPanel birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["In Hospital Regimen"] && <InHospitalRegimen birthWeight={parseFloat(parameters.birthWeight)} />}
-      {switches["Discharge Regimen"] && <DischargeRegimen birthWeight={parseFloat(parameters.birthWeight)} />}
+      {switches["Early NPO or trophic feeds + TPN"] && <TrophicFeedsPanel birthWeight={parseFloat(parameters.birthWeight)} />}
+      {switches["Refeeding Syndrome"] && <RefeedingSyndrome birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["Vitamins & Minerals"] && <VitaminsMinerals birthWeight={parameters.birthWeight} />}
+      {switches["Discharge Regimen"] && <DischargeRegimen birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["Early Adv Feeds + TPN"] && <EarlyAdvFeeds birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["Full Feeds Nut Info"] && <FullFeedsNutInfo birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["Poor Growth"] && <PoorGrowth birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["Fluid Restriction"] && <FluidRestriction birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["D Bili & Lipids"] && <DBiliAndLipids birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["Growth Targets"] && <GrowthTargets birthWeight={parseFloat(parameters.birthWeight)} />}
-      {switches["Refeeding Syndrome"] && <RefeedingSyndrome birthWeight={parseFloat(parameters.birthWeight)} />}
+      {switches["Metabolic Bone Disease"] && <MetabolicBone/>}
     </div>
     
   );
