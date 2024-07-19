@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import ParameterForm from './ParameterForm';
 import SwitchDisplay from './SwitchDisplay';
 import ExpandablePanel from './ExpandablePanel';
-import TrophicFeedsPanel from './TrophicFeedsPanel';
+import TrophicFeeds from './TrophicFeedsPanel';
 import MalnutritionCalc from './MalnutritionCalc';
 import InHospitalRegimen from './InHospitalRegimen';
 import DischargeRegimen from './DischargeRegimen';
@@ -93,7 +93,7 @@ function App() {
       )}
       </div>
       {switches["In Hospital Regimen"] && <InHospitalRegimen birthWeight={parseFloat(parameters.birthWeight)} />}
-      {switches["Early NPO or trophic feeds + TPN"] && <TrophicFeedsPanel birthWeight={parseFloat(parameters.birthWeight)} />}
+      {switches["Early NPO or trophic feeds + TPN"] && <TrophicFeeds birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["Refeeding Syndrome"] && <RefeedingSyndrome birthWeight={parseFloat(parameters.birthWeight)} />}
       {switches["Vitamins & Minerals"] && <VitaminsMinerals birthWeight={parameters.birthWeight} />}
       {switches["Discharge Regimen"] && <DischargeRegimen birthWeight={parseFloat(parameters.birthWeight)} />}

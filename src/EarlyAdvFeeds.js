@@ -108,21 +108,21 @@ function EarlyAdvFeeds({ birthWeight }) {
   return (
     <ExpandablePanel title="Early Adv feeds + TPN">
       <button onClick={handleSelectAll}>Select All</button>
-      {Object.entries(switchDetails)
-        .filter(([key]) => key !== 'switch0')  // Exclude Day 0 from the UI controls
-        .map(([key, { name }]) => (
-          <div key={key}>
-            <label>
-              {name}
-              <input 
-                type="checkbox"
-                checked={subSwitchStates[key]}
-                onChange={() => handleSubSwitchChange(key)}
-                style={{ marginLeft: '10px' }}
-              />
-            </label>
-          </div>
-      ))}
+      <div className="checkbox-container">
+  {Object.entries(switchDetails)
+    .filter(([key]) => key !== 'switch0') // Exclude Day 0 from the UI controls
+    .map(([key, { name }]) => (
+      <div key={key}>
+        <input
+          type="checkbox"
+          id={key}
+          checked={subSwitchStates[key]}
+          onChange={() => handleSubSwitchChange(key)}
+        />
+        <label htmlFor={key}>{name}</label>
+      </div>
+  ))}
+</div>
       <div className="image-container scale-down">
         {selectedImages.map((image, index) => (
           <img src={image.path} alt={`Nutritional Plan Day ${index}`} style={{ width: image.width, height: image.height }} key={index} />

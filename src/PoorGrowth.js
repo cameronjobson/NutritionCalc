@@ -6,11 +6,6 @@ function PoorGrowth({ birthWeight }) {
 
       return (
         <ExpandablePanel title="Poor Growth">
-            <div>
-                <ExpandablePanel title="HMF">
-                    {(<img src={"/images/PoorGrowth2200.png"} alt="Trophic Feeds" style={{ width: '476px', height: '267px' }} />)}
-                </ExpandablePanel>
-            </div>
             {birthWeight <= 1250 && (
                 <div>
                     <ExpandablePanel title="Prolacta">
@@ -18,6 +13,11 @@ function PoorGrowth({ birthWeight }) {
                     </ExpandablePanel>
                 </div>
             )}
+            <div>
+                <ExpandablePanel title="HMF" defaultOpen={birthWeight <= 1250 ? false : true}>
+                    {(<img src={"/images/PoorGrowth2200.png"} alt="Trophic Feeds" style={{ width: '476px', height: '267px' }} />)}
+                </ExpandablePanel>
+            </div>
         </ExpandablePanel>
       )
 }

@@ -1,0 +1,45 @@
+
+
+
+.checkbox-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); /* Adjust the minmax value as needed */
+    gap: 10px; /* Optional: Adjust spacing between checkboxes */
+    margin-bottom: 20px;
+  }
+  
+  .checkbox-container label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    width: 30px;  /* Adjust width as needed */
+    height: 20px;  /* Adjust height as needed */
+    border: 2px solid #005792;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    position: relative;
+    user-select: none;
+  }
+  
+  .checkbox-container input[type="checkbox"] {
+    appearance: none;
+    cursor: pointer;
+  }
+  
+  .checkbox-container input[type="checkbox"]:checked + label {
+    background-color: #007acc;
+    color: white;
+  }
+  
+  .checkbox-container input[type="checkbox"]:checked + label::after {
+    font-size: 14px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+  }
+  
+  
