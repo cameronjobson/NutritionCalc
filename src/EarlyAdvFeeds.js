@@ -3,9 +3,6 @@ import ExpandablePanel from './ExpandablePanel';
 import './EarlyAdvFeeds.css';
 
 function EarlyAdvFeeds({ birthWeight }) {
-  const [imageVisible, setImageVisible] = useState(false);
-  const [moreFeedingAdvImageVisible, setMoreFeedingAdvImageVisible] = useState(false);
-  const [moreCaPhosProlactaImageVisible, setMoreCaPhosProlactaImageVisible] = useState(false);
   const [subSwitchStates, setSubSwitchStates] = useState({
     switch1: false,
     switch2: false,
@@ -129,46 +126,19 @@ function EarlyAdvFeeds({ birthWeight }) {
         ))}
       </div>
       <div>
-        <label>
-          More on Trophic Feeds
-          <input
-            type="checkbox"
-            checked={imageVisible}
-            onChange={() => setImageVisible(!imageVisible)}
-            style={{ marginLeft: '10px' }}
-          />
-        </label>
-        {imageVisible && (
+        <ExpandablePanel title='More on Trophic Feeds' defaultOpen={false} isSubPanel={true}>
           <img src={selectedImage} alt="Trophic Feeds" style={imageStyle} />
-        )}
+        </ExpandablePanel>
       </div>
       <div>
-        <label>
-          More on Feeding Advancements
-          <input
-            type="checkbox"
-            checked={moreFeedingAdvImageVisible}
-            onChange={() => setMoreFeedingAdvImageVisible(!moreFeedingAdvImageVisible)}
-            style={{ marginLeft: '10px' }}
-          />
-        </label>
-        {moreFeedingAdvImageVisible && (
+        <ExpandablePanel title='More on Feeding Advancements' defaultOpen={false} isSubPanel={true}>
           <img src={feedingAdvImage} alt="Feeding Advancements" style={imageStyle} />
-        )}
+        </ExpandablePanel>
       </div>
       <div>
-        <label>
-          More on Ca/Phos and Prolacta
-          <input
-            type="checkbox"
-            checked={moreCaPhosProlactaImageVisible}
-            onChange={() => setMoreCaPhosProlactaImageVisible(!moreCaPhosProlactaImageVisible)}
-            style={{ marginLeft: '10px' }}
-          />
-        </label>
-        {moreCaPhosProlactaImageVisible && (
-          <img src={caPhosProlactaImage} alt="Ca/Phos and Prolacta" style={{ width: '376px', height: '330px' }} />
-        )}
+      <ExpandablePanel title='More on Ca/Phos and Prolacta' defaultOpen={false} isSubPanel={true}>
+        <img src={caPhosProlactaImage} alt="Ca/Phos and Prolacta" style={{ width: '376px', height: '330px' }} />
+        </ExpandablePanel>
       </div>
     </ExpandablePanel>
   );

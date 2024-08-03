@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './ExpandablePanel.css';
 
-function ExpandablePanel({ title, children, defaultOpen = true }) {
+function ExpandablePanel({ title, children, defaultOpen = true, isSubPanel = false }) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   const togglePanel = () => {
@@ -15,7 +15,7 @@ function ExpandablePanel({ title, children, defaultOpen = true }) {
 
   return (
     <div className="expandable-panel">
-      <button className="expandable-panel-button" onClick={togglePanel}>
+      <button className={`${isSubPanel ? 'expandable-subpanel-button' : 'expandable-panel-button'}`} onClick={togglePanel}>
         <span className={`expandable-panel-icon ${isOpen ? 'open' : ''}`}>
           {isOpen ? '▼' : '►'}
         </span>

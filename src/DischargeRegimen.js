@@ -165,7 +165,7 @@ D vi sol with fe until taking &gt; 1000mls of term formula per day.</p>
             <div>
                 {(<img src={selectedImage} alt="Trophic Feeds" style={imageStyle} />)}
             </div>
-            <ExpandablePanel title="Copy & Paste for Notes" defaultOpen={false}>
+            <ExpandablePanel title="Copy & Paste for Notes" defaultOpen={false} isSubPanel={true}>
                 <div dangerouslySetInnerHTML={{ __html: copyPasteContent }} />
             </ExpandablePanel>
         </ExpandablePanel>
